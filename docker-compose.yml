@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  mysql57:
+    image: mysql:5.7.32
+    container_name: mysql57
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+
+  traefik:
+    image: traefik:v2.9
+    command:
+      - --api.insecure=true
+      - --providers.docker
+      - --entrypoints.web-secure.address=:443
+      - --providers.file.directory=/configuration/
+      - --providers.file.watch=true
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./configuration:/configuration
+      - ./certs:/certs
+
+  # project_<projectname>:
+  #   build:
+  #     context: ./dockerfiles
+  #     dockerfile: <projectname>.php82.dockerfile
+  #   container_name: project_<projectname>
+  #   ports:
+  #     - "8081:8081" # use different ports for each project
+  #   volumes:
+  #     - ./<project_folder>:/var/www/html
+  #   labels:
+  #     - "traefik.http.routers.project_<projectname>.rule=Host(`<projectname>.test`)"
+  #     - "traefik.http.routers.project_<projectname>.tls=true"
+  #   depends_on:
+  #     - traefik
+  #     - mysql57
