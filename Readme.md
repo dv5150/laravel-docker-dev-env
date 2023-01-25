@@ -5,6 +5,7 @@
 - `$ wsl`
 - `$ cd ~`
 - `$ mkdir www`
+- `$ cd www/`
 - `$ git clone dv5150/laravel-docker-dev-env .`
 - Create a PHP dockerfile for your project based on the given example in `./dockerfiles`
 - Update `./docker-compose.yml` file with your project data
