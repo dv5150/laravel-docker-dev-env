@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   mysql57:
@@ -34,14 +34,14 @@ services:
   # project_<projectname>:
   #   build:
   #     context: ./dockerfiles
-  #     dockerfile: <projectname>.php82.dockerfile
+  #     dockerfile: <projectname>.dockerfile
   #   container_name: project_<projectname>
   #   ports:
   #     - "8081:8081" # use different ports for each project
   #   volumes:
   #     - ./<project_folder>:/var/www/html
   #   labels:
-  #     - "traefik.http.routers.project_<projectname>.rule=Host(`<projectname>.test`)"
+  #     - "traefik.http.routers.project_<projectname>.rule=Host(`<project_domain>.test`)"
   #     - "traefik.http.routers.project_<projectname>.tls=true"
   #   depends_on:
   #     - traefik
