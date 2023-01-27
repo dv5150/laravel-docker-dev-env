@@ -40,7 +40,7 @@ services:
   #   ports:
   #     - "8081:8081" # use different ports for each project
   #   volumes:
-  #     - ./<project_folder>:/var/www/html
+  #     - ~/www/<project_folder>:/var/www/html
   #   labels:
   #     - "traefik.http.routers.project_<projectname>.rule=Host(`<project_domain>.test`)"
   #     - "traefik.http.routers.project_<projectname>.tls=true"
