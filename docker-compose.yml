@@ -16,6 +16,7 @@ services:
 
   traefik:
     image: traefik:v2.9
+    container_name: traefik29
     command:
       - --api.insecure=true
       - --providers.docker
