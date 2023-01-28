@@ -1,22 +1,10 @@
 version: '3.8'
 
 services:
-  mysql57:
-    image: mysql:5.7.32
-    container_name: mysql57
-    restart: unless-stopped
-    ports:
-      - 3306:3306
-    volumes:
-      - ./mysql:/var/lib/mysql
-    environment:
-      MYSQL_USER: user
-      MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: secret
-
   traefik:
     image: traefik:v2.9
     container_name: traefik29
+    restart: unless-stopped
     command:
       - --api.insecure=true
       - --providers.docker
@@ -31,6 +19,35 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./configuration:/configuration
       - ./certs:/certs
+
+  mysql:
+    image: mysql:5.7.32
+    container_name: mysql57
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: supersecret
+
+  redis:
+    image: redis:7.0.8-alpine
+    container_name: redis708
+    restart: unless-stopped
+    ports:
+      - 6379:6379
+  
+  mailhog:
+    image: corpusops/mailhog:v1.0.1
+    container_name: mailhog101
+    restart: unless-stopped
+    ports:
+      - 1025:1025
+      - 8025:8025
 
   # project_<projectname>:
   #   build:
