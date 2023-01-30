@@ -63,4 +63,4 @@ services:
   #     - "traefik.http.routers.project_<projectname>.tls=true"
   #   depends_on:
   #     - traefik
-  #     - mysql57
+  #     - mysql
