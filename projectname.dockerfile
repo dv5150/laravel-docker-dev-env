@@ -9,9 +9,12 @@ WORKDIR /var/www/html
 RUN apk --no-cache add shadow && usermod -u 1000 www-data
 
 # Install PHP extensions
-RUN apk add icu-dev
-RUN docker-php-ext-install exif intl opcache pdo pdo_mysql
-COPY ./opcache/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+ADD ./php/php82.ini /usr/local/etc/php/php.ini
+ADD ./opcache/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+RUN apk --no-cache add icu-dev autoconf g++ make imagemagick-dev imagemagick \
+    && docker-php-ext-install exif intl opcache pdo pdo_mysql \
+    && pecl install imagick \
+    && docker-php-ext-enable imagick
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
