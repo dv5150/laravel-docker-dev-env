@@ -5,7 +5,6 @@
 - `$ wsl`
 - `$ cd ~`
 - `$ git clone dv5150/laravel-docker-dev-env dev-env`
-- Create dockerfiles for your projects based on the given example: `~/dev-env/<projectname>.dockerfile` and update them with different ports
 - Update `~/dev-env/docker-compose.yml` file with your project data
 - Run Windows PowerShell __as admin__: `nano C:\Windows\system32\drivers\etc\hosts`
 - Add your project domains to your hosts file, e.g.:
