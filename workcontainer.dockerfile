@@ -1,6 +1,5 @@
 ARG NODE_VERSION
 ARG PHP_VERSION
-ARG PHP_INI
 
 # Define Node version
 FROM node:${NODE_VERSION}-alpine AS node
@@ -14,9 +13,6 @@ WORKDIR /var/www/html
 
 # Set up user
 RUN apk --no-cache add shadow && usermod -u 1000 www-data
-
-# Set up custom PHP ini
-ADD ./php/${PHP_INI} /usr/local/etc/php/php.ini
 
 # [EXT] OPCache
 ADD ./opcache/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
