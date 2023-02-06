@@ -28,7 +28,7 @@ RUN apk --no-cache add autoconf g++ make imagemagick-dev imagemagick \
     && docker-php-ext-enable imagick
 
 # [EXt] ...others...
-RUN docker-php-ext-install exif pdo pdo_mysql
+RUN docker-php-ext-install exif pcntl pdo pdo_mysql
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
