@@ -40,6 +40,8 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
-EXPOSE 8080
 USER www-data:1000
+
+ENV ENV="/etc/.ashrc"
+
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]

@@ -71,9 +71,10 @@ services:
   #     - "8081:8080" # use different port for each project ... 8081:8080, 8082:8080, 8083:8080 ...
   #   volumes:
   #     - ~/www/<project_folder>:/var/www/html
+  #     - ./.ashrc:/etc/.ashrc
   #   labels:
   #     - "traefik.http.routers.project_<projectname>.rule=Host(`<project_domain>.test`)"
   #     - "traefik.http.routers.project_<projectname>.tls=true"
-  #   depends_on:
+  #   depends_on: # update this list with the services required by the project
   #     - traefik
   #     - mysql

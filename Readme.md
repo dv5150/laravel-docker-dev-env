@@ -20,6 +20,7 @@ To create a Docker development environment, which is able to:
     - `127.0.0.1 yetanothertodolist.test`
 - *(Optional) Before the last step, do the SSL setup explained below if you want to get https working*
 - Now you'll be able to run as many projects as you would like to: `$ docker-compose up -d <projectname> <anotherproject> <etc...>`
+- Enter the project work container as: `docker-compose exec -it <projectname> /bin/sh`
 ---
 ## SSL:
 - Run Windows PowerShell __as admin__
@@ -30,3 +31,14 @@ To create a Docker development environment, which is able to:
     - `$ cd \\wsl.localhost\Ubuntu\home\<user>\dev-env\certs`
     - `$ mkcert <projectname>.test`
 - Update `~/dev-env/traefik/config.yml` file with the cert file locations from the previous step
+---
+## Custom terminal commands:
+- `[art]` - `php artisan`
+- `[rl]` - `route:list`
+- `[rlc]` - `route:list --compact`
+- `[nrw]` - `npm run watch`
+- `[nrp]` - `npm run production`
+- `[nrd]` - `npm run development`
+- `[dumpa]` - `composer dump-autoload`
+
+Update `.ashrc` file to change these.
