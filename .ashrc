@@ -10,10 +10,6 @@ alias nrw='npm run watch'
 alias nrp='npm run production'
 alias nrd='npm run development'
 
-function dexec() {
-    docker-compose exec -it "$1" /bin/sh
-}
-
 cd /var/www/html
 
 clear
