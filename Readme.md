@@ -11,7 +11,7 @@ To create a Docker development environment, which is able to:
 - Install [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) + [Ubuntu](https://apps.microsoft.com/store/detail/ubuntu-22041-lts/9PN20MSR04DW) + [Docker](https://www.docker.com/)
 - `$ wsl`
 - `$ cd ~`
-- `$ git clone dv5150/laravel-docker-dev-env dev-env`
+- `$ git clone git@github.com:dv5150/laravel-docker-dev-env.git dev-env`
 - Update `~/dev-env/docker-compose.yml` file with your project data
 - Run Windows PowerShell __as admin__: `nano C:\Windows\system32\drivers\etc\hosts`
 - Add your project domains to your hosts file, e.g.:
